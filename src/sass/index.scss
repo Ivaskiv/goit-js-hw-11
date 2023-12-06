@@ -1,2 +1,24 @@
 @import './common';
 @import './example';
+.search-form {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 20px 0;
+  height: 80px;
+  background-color: Coral;
+}
+input {
+  border-color: coral;
+  border: 1px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+button {
+  margin: 0 0 0 5px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+input[type='text']:focus {
+  border: 3px solid #555;
+}
