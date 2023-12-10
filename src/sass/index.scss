@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   padding: 20px 0 20px 0;
+  margin-bottom: 16px;
   height: 80px;
   background-color: Coral;
 }
@@ -13,12 +14,101 @@ input {
   border-radius: 12px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-button {
-  margin: 0 0 0 5px;
+.btn-search {
+  margin: 0 0 0 10px;
+  padding: 10px;
   border-radius: 12px;
   border: none;
+  color: coral;
+  background-color: #fff;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-input[type='text']:focus {
-  border: 3px solid #555;
+.load-more {
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+  border: none;
+  background-color: coral;
+  padding: 10px;
+  margin: 0 auto;
+  color: white;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+input[type='text']:focus,
+input[type='text']:hover,
+input[type='text']:active {
+  border: 3px solid rgb(112, 179, 5);
+}
+button:hover {
+  background-color: rgb(112, 179, 5);
+  color: #fff;
+}
+input[type='text']:not(:placeholder-shown) {
+  border: 3px solid rgb(112, 179, 5);
+}
+.gallery {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.photo-card img {
+  width: 100%;
+  object-fit: cover;
+}
+.photo-card .info {
+  padding: 0 0 5px 5px;
+  width: calc(100% - 16px);
+  display: flex;
+  justify-content: space-between;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+}
+
+.info-item {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+@media (min-width: 325px) and (max-width: 768px) {
+  .gallery {
+    width: calc(50% - 16px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  .photo-card {
+    height: auto;
+  }
+  .photo-card img {
+    // height: 80%;
+  }
+  .photo-card .info {
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    gap: 4px;
+    margin: 0;
+  }
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+  }
+}
+@media (min-width: 768px) {
+  .photo-card {
+    width: calc(25% - 16px);
+  }
 }
