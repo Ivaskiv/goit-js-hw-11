@@ -20,14 +20,8 @@ function displayTotalHits(totalHits) {
   );
 }
 //+слухач подій для форми пошуку
-// searchForm.addEventListener('submit', handleSearch);
 btnSearch.addEventListener('click', handleSearch);
 btnLoadMore.addEventListener('click', handleLoadMore);
-//відмінити submit enter
-// searchQuery.addEventListener(
-//   'keydown',
-//   event => event.key === 'Enter' && event.preventDefault()
-// );
 
 //форма пошуку
 async function handleSearch(event) {
@@ -117,3 +111,12 @@ function createImageCard(image) {
   `;
   return card;
 }
+
+//!
+//відмінити submit enter
+// searchQuery.addEventListener(
+//   'keydown',
+//   event => event.key === 'Enter' && event.preventDefault()
+// );
+
+// searchForm.addEventListener('submit', handleSearch);

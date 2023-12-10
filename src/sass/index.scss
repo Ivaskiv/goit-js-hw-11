@@ -1,114 +1,168 @@
 @import './common';
 @import './example';
+
+/* Common styles for buttons and input fields */
+button,
+input {
+  border-radius: 12px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Search Form */
 .search-form {
   display: flex;
   justify-content: center;
-  padding: 20px 0 20px 0;
+  padding: 20px 0;
   margin-bottom: 16px;
   height: 80px;
   background-color: Coral;
+  transition: background-color 0.3s ease;
 }
+
 input {
-  border-color: coral;
-  border: 1px;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 1px solid coral;
+  transition: border 0.3s ease;
 }
+
 .btn-search {
-  margin: 0 0 0 10px;
+  margin-left: 10px;
   padding: 10px;
-  border-radius: 12px;
   border: none;
   color: coral;
   background-color: #fff;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Load More Button */
 .load-more {
   display: flex;
   justify-content: center;
-  border-radius: 12px;
   border: none;
   background-color: coral;
   padding: 10px;
   margin: 0 auto;
   color: white;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Input Styles */
 input[type='text']:focus,
 input[type='text']:hover,
-input[type='text']:active {
-  border: 3px solid rgb(112, 179, 5);
-}
-button:hover {
-  background-color: rgb(112, 179, 5);
-  color: #fff;
-}
+input[type='text']:active,
 input[type='text']:not(:placeholder-shown) {
   border: 3px solid rgb(112, 179, 5);
 }
+
+/* Hover Styles for Buttons */
+button:hover,
+.btn-search:hover {
+  background-color: rgb(112, 179, 5);
+  color: #fff;
+}
+//=======================
+//=========================
+/* Gallery and Photo Card */
 .gallery {
-  flex-wrap: wrap;
-  justify-content: center;
+  margin: 0 15px;
   gap: 16px;
   display: flex;
-  flex-direction: column;
-  align-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
 .photo-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: box-shadow 0.3s ease;
 }
-.photo-card img {
+
+.photo-card > img {
   width: 100%;
+  height: auto;
   object-fit: cover;
 }
-.photo-card .info {
-  padding: 0 0 5px 5px;
-  width: calc(100% - 16px);
-  display: flex;
-  justify-content: space-between;
-  justify-content: center;
+
+.photo-card > .info {
+  width: 100%;
+  height: 20%;
   gap: 4px;
-  margin: 0;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  // color: green;
+  transition: color 0.3s ease;
 }
 
 .info-item {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  font-size: 14px;
+  width: 100%;
+  font-size: 10px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
 }
-@media (min-width: 325px) and (max-width: 768px) {
+
+/********** Для екранів від 428px до 768px */
+@media (min-width: 428px) and (max-width: 768px) {
   .gallery {
-    width: calc(50% - 16px);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
+    justify-content: space-between;
   }
   .photo-card {
-    height: auto;
-  }
-  .photo-card img {
-    // height: 80%;
+    flex-basis: calc((100% - 16px) / 2);
   }
   .photo-card .info {
     display: flex;
+    flex-direction: column;
+    flex-direction: row;
+  }
+  .info {
     justify-content: space-between;
-    justify-content: center;
-    gap: 4px;
-    margin: 0;
   }
   .info-item {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    font-size: 14px;
+    flex-direction: column;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+    // color: red;
+  }
+  .photo-card > img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
   }
 }
-@media (min-width: 768px) {
+
+/* Для екранів від 768px*/
+@media screen and (min-width: 768px) {
   .photo-card {
-    width: calc(25% - 16px);
+    width: calc((100% - 3 * 16px) / 4);
+  }
+  .info {
+    justify-content: space-between;
+  }
+  .info-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    // color: blue;
+  }
+  .photo-card .info {
+    display: flex;
+    flex-direction: column;
+    flex-direction: row;
+  }
+  .photo-card > img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
   }
 }
