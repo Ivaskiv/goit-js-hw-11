@@ -1,0 +1,139 @@
+/* Common styles for buttons and input fields */
+button,
+input {
+  border-radius: 12px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Search Form */
+.search-form {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  margin-bottom: 16px;
+  background-color: Coral;
+  transition: background-color 0.3s ease;
+}
+.input-container {
+  height: 40px;
+  position: relative;
+  display: inline-flex;
+}
+input {
+  padding-right: 40px;
+  border: 1px solid coral;
+  border-radius: 5px 0 0 5px;
+  transition: border 0.3s ease;
+  margin-right: 4px;
+}
+
+.btn-search {
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  color: coral;
+}
+.search-svg {
+  display: inline-block;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+/* Load More Button */
+.load-more {
+  display: flex;
+  justify-content: center;
+  border: none;
+  background-color: coral;
+  padding: 10px;
+  margin: 0 auto;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Input Styles */
+input[type='text']:focus,
+input[type='text']:hover,
+input[type='text']:active,
+input[type='text']:not(:placeholder-shown) {
+  border: 3px solid rgb(112, 179, 5);
+}
+
+/* Hover Styles for Buttons */
+button:hover,
+.btn-search:hover {
+  background-color: rgb(112, 179, 5);
+  color: #fff;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+}
+/* Gallery and Photo Card */
+.gallery,
+.info {
+  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.gallery {
+  padding-bottom: 30px;
+  justify-content: center;
+}
+
+.gallery-link {
+  min-width: 320px;
+  flex-basis: calc((100% - 80px) / 4);
+  border: none;
+  overflow: hidden;
+  transition: all 0.3s;
+
+  position: relative;
+}
+
+.gallery-link:hover,
+.gallery-link:focus {
+  transform: scale(1.05);
+}
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  position: relative;
+}
+.gallery-item > img {
+  width: 100%;
+  display: block;
+  height: 30vh;
+  object-fit: cover;
+  object-position: center center;
+}
+.info {
+  padding: 10px;
+  justify-content: space-around;
+}
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: smaller;
+  text-decoration: none;
+}
+.photo-card {
+  max-width: 320px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: box-shadow 0.3s ease;
+}
