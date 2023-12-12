@@ -9,25 +9,18 @@ const searchQuery = document.querySelector('input');
 const gallery = document.querySelector('.gallery');
 const btnSearch = document.querySelector('button');
 const btnLoadMore = document.querySelector('.load-more');
+const per_page = 40;
+
 let page = 1;
-//
 let lightbox;
-//===================
-// Функція для ініціалізації SimpleLightbox
+
+//функція для ініціалізації SimpleLightbox
 function initLightbox() {
   lightbox = new SimpleLightbox('.photo-card a');
 }
-// Викликати initLightbox при старті скрипта
+//викликати initLightbox при старті скрипта
 initLightbox();
-//=====================
 btnLoadMore.style.display = 'none';
-//
-const per_page = 40;
-// function displayTotalHits(totalHits) {
-//   Notiflix.Notify.success(
-//     `We're sorry, but you've reached the end of search results. We found ${totalHits} images.`
-//   );
-// }
 //+слухач подій для форми пошуку
 btnSearch.addEventListener('click', handleSearch);
 btnLoadMore.addEventListener('click', handleLoadMore);
@@ -95,12 +88,11 @@ async function handleLoadMore() {
       const imageCards = data.hits.map(createImageCard);
       gallery.append(...imageCards);
       page += 1;
-      // Оновлення галереї зображень
+      //оновлення галереї зображень
       lightbox.refresh();
 
       if (page * per_page >= data.totalHits) {
         btnLoadMore.style.display = 'none';
-        //вивести пов. про к-ст знайдених зобр.
         Notiflix.Notify.info(
           "We're sorry, but you've reached the end of search results."
         );
