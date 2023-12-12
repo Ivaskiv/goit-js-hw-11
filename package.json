@@ -30,5 +30,9 @@
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"
   },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'",
+    "sandbox": "sandbox allow-scripts; allow-same-origin"
+  },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }

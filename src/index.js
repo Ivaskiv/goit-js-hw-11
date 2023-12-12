@@ -1,4 +1,3 @@
-import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import axios from 'axios';
@@ -12,8 +11,15 @@ const btnSearch = document.querySelector('button');
 const btnLoadMore = document.querySelector('.load-more');
 let page = 1;
 //
-let lightbox = new SimpleLightbox('.gallery-link a');
-//
+let lightbox;
+//===================
+// Функція для ініціалізації SimpleLightbox
+function initLightbox() {
+  lightbox = new SimpleLightbox('.gallery-link a');
+}
+// Викликати initLightbox при старті скрипта
+initLightbox();
+//=====================
 btnLoadMore.style.display = 'none';
 //
 const per_page = 40;
