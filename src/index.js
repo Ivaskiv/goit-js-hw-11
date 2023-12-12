@@ -15,7 +15,7 @@ let lightbox;
 //===================
 // Функція для ініціалізації SimpleLightbox
 function initLightbox() {
-  lightbox = new SimpleLightbox('.gallery-link a');
+  lightbox = new SimpleLightbox('.photo-card a');
 }
 // Викликати initLightbox при старті скрипта
 initLightbox();
