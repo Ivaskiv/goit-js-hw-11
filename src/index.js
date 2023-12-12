@@ -20,18 +20,13 @@ function initLightbox() {
 }
 //викликати initLightbox при старті скрипта
 initLightbox();
+
 btnLoadMore.style.display = 'none';
 //+слухач подій для форми пошуку
 btnSearch.addEventListener('click', handleSearch);
 btnLoadMore.addEventListener('click', handleLoadMore);
-
-//форма пошуку
-async function handleSearch(event) {
-  event.preventDefault();
-  const query = searchQuery.value.trim();
-  if (query === '') {
-    return;
-  }
+//==============
+async function fetchSearch(query, currentPage) {
   try {
     //отр. зображення з Pixabay API на основі пошукового запиту
     const response = await axios.get(BASE_URL, {
@@ -41,24 +36,38 @@ async function handleSearch(event) {
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
-        page: 1,
+        page: currentPage,
         per_page,
       },
     });
+    return response.data;
+  } catch (e) {
+    console.error('Error:', e);
+    throw e;
+  }
+}
+//==============форма пошуку
+async function handleSearch(event) {
+  event.preventDefault();
+  const query = searchQuery.value.trim();
+  if (query === '') {
+    return;
+  }
+  try {
+    const data = await fetchSearch(query, 1);
 
-    const data = response.data;
-    //якщо data.hits.length === 0, вив. повідомлення про відсутність зображень, інакше очистити галерею
     if (data.hits.length === 0) {
       Notiflix.Notify.info(
         'Sorry, there are no images matching your search query. Please try again.'
       );
       return;
     }
+
     gallery.innerHTML = '';
     const imageCards = data.hits.map(createImageCard);
     gallery.append(...imageCards);
     lightbox.refresh();
-    //показ кількості знайдених зображень
+
     Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
 
     if (data.totalHits <= per_page) {
@@ -66,29 +75,22 @@ async function handleSearch(event) {
     } else {
       btnLoadMore.style.display = 'block';
     }
+    //скинути з-ння page до 1
+    page = 1;
   } catch (e) {
     console.error('Error:', e);
   }
 }
-
+//==============ф-я завантажити більше зображень
 async function handleLoadMore() {
   try {
-    const response = await axios.get(BASE_URL, {
-      params: {
-        key: API_KEY,
-        q: searchQuery.value.trim(),
-        image_type: 'photo',
-        page: page + 1,
-        per_page,
-      },
-    });
+    const query = searchQuery.value.trim();
+    const data = await fetchSearch(query, page + 1);
 
-    const data = response.data;
     if (data.hits.length > 0) {
       const imageCards = data.hits.map(createImageCard);
       gallery.append(...imageCards);
       page += 1;
-      //оновлення галереї зображень
       lightbox.refresh();
 
       if (page * per_page >= data.totalHits) {
@@ -105,7 +107,7 @@ async function handleLoadMore() {
     console.error('Error:', e);
   }
 }
-//створення карток для зображень
+//==============створення карток для зображень
 function createImageCard(image) {
   const {
     webformatURL,
